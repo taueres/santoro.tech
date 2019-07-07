@@ -1,25 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useReducer, useEffect} from 'react';
+import {reducer, initialState} from './reducer';
 
 function App() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  useEffect(() => {
+    const handleCharTyped = event => {
+      const action = {
+        type: 'KEY_PRESSED',
+        payload: {
+          ctrlKey: event.ctrlKey,
+          key: event.key
+        }
+      };
+      dispatch(action);
+    };
+    document.addEventListener('keydown', handleCharTyped);
+    return () => document.removeEventListener('keydown', handleCharTyped);
+  }, []);
+
+  const {consoleLine, output} = state;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <pre className="inline">
+        {output}
+Your input: {consoleLine}<span className="cursor"></span>
+      </pre>
+      <input id="letsfocus" type="password"/>
+    </>
   );
 }
 

@@ -1,13 +1,70 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: #000;
+  color: #42f445;
+  font-family: Courier New, Courier, monospace;
+  font-size: 15px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+.psst {
+  font-size: 10px;
+}
+
+@media (min-width: 800px) {
+  body {
+    font-size: 19px;
+  }
+  .psst {
+    font-size: 12px;
+  }
+}
+
+@keyframes blinking {
+  0% {
+    opacity: 0;
+  }
+  19% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.cursor {
+  display: inline-block;
+  background-color: #42f445;
+  width: .5em;
+  height: 1em;
+  animation: blinking .5s linear 0s infinite;
+  vertical-align: middle;
+}
+
+.inline {
+  display: inline;
+}
+
+pre {
+  margin: 0;
+  padding: 0;
+  white-space: pre-wrap;
+  width: 100vw;
+}
+
+#console {
+  margin-top: 1em;
+}
+
+#console pre {
+  line-height: 1em;
+}
+
+#letsfocus {
+  opacity: 0;
+}
+
+a, a:visited {
+  color: #42f445;
 }
