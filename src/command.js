@@ -1,5 +1,7 @@
 import React from 'react';
 
+const colorsLength = 5
+
 function getCommandOutput(command, key) {
   if (command === 'social') {
     return (
@@ -64,7 +66,7 @@ function addToOutput(output, cmdOutput, key, command) {
   ];
 }
   
-export function processCommandOutput({output, invalidCmdIdx, consoleLine}) {
+export function processCommandOutput({output, invalidCmdIdx, consoleLine, colorIdx}) {
   const key = output.length;
   const trimmedCmd = consoleLine.trim();
 
@@ -72,6 +74,13 @@ export function processCommandOutput({output, invalidCmdIdx, consoleLine}) {
     const noCmd = 'I cannot figure out what to do by myself... HELP ME!\n';
     return {
       output: addToOutput(output, noCmd, key, consoleLine)
+    };
+  }
+
+  if (trimmedCmd === 'wtf') {
+    return {
+      output: addToOutput(output, '\n', key, consoleLine),
+      colorIdx: (colorIdx + 1) % colorsLength
     };
   }
 

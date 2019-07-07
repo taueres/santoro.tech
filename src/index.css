@@ -57,7 +57,7 @@ pre {
   margin-top: 1em;
 }
 
-#console pre {
+#console .interactive {
   line-height: 1em;
 }
 
@@ -67,4 +67,52 @@ pre {
 
 a, a:visited {
   color: #42f445;
+}
+
+.color-1 {
+  color:#ff14d7;
+}
+
+.color-1 .cursor {
+  background-color:#ff14d7;
+}
+
+.color-1 a, .color-1 a:visited {
+  color:#ff14d7;
+}
+
+.color-2 {
+  color:#fbff14;
+}
+
+.color-2 .cursor {
+  background-color:#fbff14;
+}
+
+.color-2 a, .color-2 a:visited {
+  color:#fbff14;
+}
+
+.color-3 {
+  color:#14fff7;
+}
+
+.color-3 .cursor {
+  background-color:#14fff7;
+}
+
+.color-3 a, .color-3 a:visited {
+  color:#14fff7;
+}
+
+.color-4 {
+  color:#ff1414;
+}
+
+.color-4 .cursor {
+  background-color:#ff1414;
+}
+
+.color-4 a, .color-4 a:visited {
+  color:#ff1414;
 }

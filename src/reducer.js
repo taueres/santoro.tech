@@ -5,7 +5,8 @@ const letterRegex = /^[a-z ]$/i;
 export const initialState = {
   consoleLine: '',
   output: [],
-  invalidCmdIdx: 0
+  invalidCmdIdx: 0,
+  colorIdx: 0
 };
 
 export function reducer(state, {type, payload}) {
