@@ -43,13 +43,47 @@ Please discard the weird characters: brackets and dashes (they are used as anti-
 
 `;
   }
+
+  if (command === 'help') {
+    return 'Help!? Help!? Who needs help?\n'
+  }
 }
-  
-export function processCommandOutput(output, command) {
-  const key = output.length;
+
+const invalidCmdMessages = [
+  'Nope! Did you read the commands available?',
+  'What should that mean?!',
+  'Are you serious!?',
+  'I\'m afraid that\'s not working.'
+];
+
+function addToOutput(output, cmdOutput, key, command) {
   return [
     ...output,
     <React.Fragment key={`input-${key}`}>Your input: {command}<br/></React.Fragment>,
-    getCommandOutput(command, key)
+    cmdOutput
   ];
+}
+  
+export function processCommandOutput({output, invalidCmdIdx, consoleLine}) {
+  const key = output.length;
+  const trimmedCmd = consoleLine.trim();
+
+  if (trimmedCmd === '') {
+    const noCmd = 'I cannot figure out what to do by myself... HELP ME!\n';
+    return {
+      output: addToOutput(output, noCmd, key, consoleLine)
+    };
+  }
+
+  const commandOutput = getCommandOutput(trimmedCmd, key)
+  if (commandOutput) {
+    return {
+      output: addToOutput(output, commandOutput, key, consoleLine)
+    };
+  }
+
+  return {
+    output: addToOutput(output, invalidCmdMessages[invalidCmdIdx] + '\n', key, consoleLine),
+    invalidCmdIdx: (invalidCmdIdx + 1) % invalidCmdMessages.length
+  };
 }

@@ -1,10 +1,11 @@
 import {processCommandOutput} from './command';
 
-const letterRegex = /^[a-z]$/i;
+const letterRegex = /^[a-z ]$/i;
 
 export const initialState = {
   consoleLine: '',
-  output: []
+  output: [],
+  invalidCmdIdx: 0
 };
 
 export function reducer(state, {type, payload}) {
@@ -34,7 +35,7 @@ export function reducer(state, {type, payload}) {
         return {
           ...state,
           consoleLine: '',
-          output: processCommandOutput(state.output, state.consoleLine)
+          ...processCommandOutput(state)
         };
       }
 
