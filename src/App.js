@@ -18,6 +18,8 @@ function App() {
     return () => document.removeEventListener('keydown', handleCharTyped);
   }, []);
 
+  useEffect(() => window.scrollTo(0, document.body.scrollHeight), [state]);
+
   const {consoleLine, output, colorIdx} = state;
 
   return (
@@ -31,6 +33,10 @@ function App() {
         {' '}* "<b>social</b>"  - social networks I use<br/>
         {' '}* "<b>contact</b>" - my email addresses<br/>
         {' '}* "<b>wtf</b>"     - a little surprise!<br/><br/>
+        <div className="view-source">
+          Curious to see how this app works?
+          {' '}<a href="https://github.com/taueres/santoro.tech" target="_blank">View source</a>
+        </div><br/>
       </pre>
       <pre className="inline interactive">
         {output}

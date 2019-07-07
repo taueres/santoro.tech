@@ -5,7 +5,7 @@ body {
   font-size: 15px;
 }
 
-.psst {
+.psst, .view-source {
   font-size: 10px;
 }
 
@@ -13,7 +13,7 @@ body {
   body {
     font-size: 19px;
   }
-  .psst {
+  .psst, .view-source {
     font-size: 12px;
   }
 }
