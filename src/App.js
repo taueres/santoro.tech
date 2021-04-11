@@ -35,7 +35,7 @@ function App() {
         {' '}* "<b>wtf</b>"     - a little surprise!<br/><br/>
         <div className="view-source">
           Curious to see how this app works?
-          {' '}<a href="https://github.com/taueres/santoro.tech" target="_blank">View source</a>
+          {' '}<a href="https://github.com/taueres/santoro.tech" target="_blank" rel="noreferrer nofollow">View source</a>
         </div><br/>
       </pre>
       <pre className="inline interactive">

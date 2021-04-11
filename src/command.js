@@ -9,10 +9,10 @@ function getCommandOutput(command, key) {
         <br/>*** Social ***<br/>
         <br/>
         Feel free to contact me via the social networks:<br/>
-        {' '}* <a href="https://github.com/taueres" target="_blank">GitHub</a><br/>
-        {' '}* <a href="https://linkedin.com/in/sergio-santoro-0893239a" target="_blank">LinkedIn</a><br/>
-        {' '}* <a href="https://twitter.com/taueres" target="_blank">Twitter</a><br/>
-        {' '}* <a href="https://www.facebook.com/sergio.santoro.7" target="_blank">Facebook</a><br/>
+        {' '}* <a href="https://github.com/taueres" target="_blank" rel="noreferrer nofollow">GitHub</a><br/>
+        {' '}* <a href="https://linkedin.com/in/sergio-santoro-0893239a" target="_blank" rel="noreferrer nofollow">LinkedIn</a><br/>
+        {' '}* <a href="https://twitter.com/taueres" target="_blank" rel="noreferrer nofollow">Twitter</a><br/>
+        {' '}* <a href="https://www.facebook.com/sergio.santoro.7" target="_blank" rel="noreferrer nofollow">Facebook</a><br/>
         <br/>
       </React.Fragment>
     );
