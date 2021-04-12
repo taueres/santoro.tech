@@ -11,6 +11,9 @@ function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
   useEffect(() => {
     const handleCharTyped = event => {
+      if (isTouchDevice() && event.key !== 'Backspace' && event.key !== 'Enter') {
+        return;
+      }
       const action = {
         type: 'KEY_PRESSED',
         payload: {
@@ -24,7 +27,7 @@ function App() {
     return () => document.removeEventListener('keydown', handleCharTyped);
   }, []);
 
-  useEffect(() => window.scrollTo(0, document.body.scrollHeight), [state]);
+  useEffect(() => window.scrollTo(0, document.body.scrollHeight), [state.output]);
 
   const onInputChange = useCallback(event => {
     event.preventDefault();
