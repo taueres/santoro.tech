@@ -1,5 +1,11 @@
-import React, {useReducer, useEffect} from 'react';
+import React, {useReducer, useEffect, useCallback} from 'react';
 import {reducer, initialState} from './reducer';
+
+function isTouchDevice() {
+  return (('ontouchstart' in window) ||
+     (navigator.maxTouchPoints > 0) ||
+     (navigator.msMaxTouchPoints > 0));
+}
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -19,6 +25,30 @@ function App() {
   }, []);
 
   useEffect(() => window.scrollTo(0, document.body.scrollHeight), [state]);
+
+  const onInputChange = useCallback(event => {
+    event.preventDefault();
+    const action = {
+      type: 'KEY_PRESSED',
+      payload: {
+        ctrlKey: false,
+        key: event.nativeEvent.data,
+      }
+    };
+    dispatch(action);
+  }, []);
+
+  useEffect(() => {
+    if (isTouchDevice()) {
+      const handler = () => {
+        document.getElementById('letsfocus').focus();
+      };
+      document.addEventListener('click', handler);
+      return () => {
+        document.removeEventListener('click', handler);
+      };
+    }
+  }, []);
 
   const {consoleLine, output, colorIdx} = state;
 
@@ -42,7 +72,7 @@ function App() {
         {output}
 Your input: {consoleLine}<span className="cursor"></span>
       </pre>
-      <input id="letsfocus" type="password"/>
+      {isTouchDevice() && <input id="letsfocus" type="password" onChange={onInputChange}/>}
     </div>
   );
 }
